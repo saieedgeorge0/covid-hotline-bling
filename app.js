@@ -7,7 +7,7 @@ if (port == null || port == "") {
 }
 
 app.get('/', (req, res) => {
-  res.send('Hi Ellen')
+  res.send('Hi Ellen part 2')
 });
 
 app.listen(port, () => {
