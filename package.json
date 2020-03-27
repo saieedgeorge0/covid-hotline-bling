@@ -1,0 +1,25 @@
+{
+  "name": "covid-hotline-bling",
+  "version": "1.0.0",
+  "description": "A Twilio bot created for the (COVID-19) Pandemic Response Hackathon. It prompts users for their general location and symptoms, then directing users to their appropriate local phone hotline if necessary.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saieedgeorge0/covid-hotline-bling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saieedgeorge0/covid-hotline-bling/issues"
+  },
+  "homepage": "https://github.com/saieedgeorge0/covid-hotline-bling#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
