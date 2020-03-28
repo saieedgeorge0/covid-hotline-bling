@@ -19,7 +19,7 @@ app.get("/", async function(req, res) {
 });
 
 app.post('/sms', async function (req, res) {
-  const smsCount = req.session.counter || 0;
+  let smsCount = req.session.counter || 0;
   const respValues = req.session.respvalues || [];
 
   let message = `Hi! What's your zipcode? Once you let us know, please wait - it can take a few moments to pull the data.`;
