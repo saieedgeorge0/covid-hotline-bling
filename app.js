@@ -35,8 +35,9 @@ app.post('/sms', (req, res) => {
   req.session.respvalues = respValues;
 
   if(req.body.Body == `clear`) {
-    respValues = [];
-    smsCount = 0;
+    req.session.respvalues = [];
+    req.session.counter = 0;
+    message = "You have cleared your information"
   }
 
   const twiml = new MessagingResponse();
