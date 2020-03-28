@@ -26,11 +26,14 @@ const getCases = async (zipcode) => {
     const casedatajson = await csv().fromFile('casedata.csv');
     const recentdate = casedatajson[casedatajson.length-1]['date'];
     for(var i = 0; i < casedatajson.length; i++) {
-    delete casedatajson[i]['date'];
-    delete casedatajson[i]['county'];
-    delete casedatajson[i]['state'];
-    casedatajson[i]['cases'] = parseInt(casedatajson[i]['cases']);
-    casedatajson[i]['deaths'] = parseInt(casedatajson[i]['deaths']);
+        if (casedatajson[i]['county'] == 'New York City') {
+            casedatajson[i]['fips'] = "36061";
+        }
+        delete casedatajson[i]['date'];
+        delete casedatajson[i]['county'];
+        delete casedatajson[i]['state'];
+        casedatajson[i]['cases'] = parseInt(casedatajson[i]['cases']);
+        casedatajson[i]['deaths'] = parseInt(casedatajson[i]['deaths']);
     }
 
     casedatajson2 = [];
