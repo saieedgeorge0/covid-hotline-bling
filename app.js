@@ -30,6 +30,9 @@ app.post('/sms', async function (req, res) {
       respValues.push(req.body.Body);
       const result = await getResults(respValues[0]);
       message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
+      if(typeof result.name === undefined) {
+        message = `No centers found. Sorry! Please try a different zipcode.`;
+      }
     } else {
       console.log(`post code is invalid.`);
       message = `Please enter a valid zipcode.`
