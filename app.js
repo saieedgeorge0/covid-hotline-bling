@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.post('/sms', (req, res) => {
   const smsCount = req.session.counter || 0;
-  const respValues = req.cookies.respvalues || [];
+  const respValues = req.session.respvalues || [];
 
   let message = `What state do you currently live in?`;
 
@@ -31,7 +31,7 @@ app.post('/sms', (req, res) => {
   }
 
   req.session.counter = smsCount + 1;
-  req.cookies.respvalues = respValues;
+  // req.session.respvalues = respValues;
 
   const twiml = new MessagingResponse();
   twiml.message(message);
