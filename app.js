@@ -30,7 +30,7 @@ app.post('/sms', async function (req, res) {
   let message = `Hi! What's your zipcode? Once you let us know, please wait - it can take a few moments to pull the data.`;
 
   if(smsCount == 1) {
-    if (postcodeValidator(respValues[0], 'US')) {
+    if (postcodeValidator(req.body.Body, 'US')) {
       respValues.push(req.body.Body);
       const result = await getResults(respValues[0]);
       message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
