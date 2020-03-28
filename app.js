@@ -1,6 +1,9 @@
 const express = require('express')
+const session = require('express-session');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
+
+app.use(session({secret: 'anything-you-want-but-keep-secret'}));
 
 let port = process.env.PORT;
 if (port == null || port == "") {
@@ -8,13 +11,30 @@ if (port == null || port == "") {
 }
 
 app.get('/', (req, res) => {
-  res.send('Hi Ellen part 2')
+  res.send('COVID Hotline Bling Bot is running')
 });
 
 app.post('/sms', (req, res) => {
-  const twiml = new MessagingResponse();
+  const smsCount = req.session.counter || 0;
+  const respValues = req.session.respvalues || [];
 
-  twiml.message('The Robots are coming! Head for the hills!');
+  let message = 'What state do you currently live in?';
+
+  if(smsCount == 1) {
+    respValues.push(req.body.Body);
+    message = 'Which county within ' + respValues[0] + ' do you currently reside?';
+  }
+
+  if(smsCount > 1) {
+    respValues.push(req.body.Body);
+    message = "Thanks! You live in " + respValues[0] + ', ' + respValues[1] + '.';
+  }
+
+  req.session.counter = smsCount + 1;
+  req.session.respvalues = respValues;
+
+  const twiml = new MessagingResponse();
+  twiml.message(message);
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
