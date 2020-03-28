@@ -18,6 +18,7 @@
   "homepage": "https://github.com/saieedgeorge0/covid-hotline-bling#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "twilio": "^3.41.1"
   },
   "engines": {
