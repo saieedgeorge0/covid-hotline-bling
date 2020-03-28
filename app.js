@@ -21,7 +21,7 @@ app.get("/", async function(req, res) {
   res.send('COVID Hotline Bling Bot is running');
 });
 
-app.post('/sms', (req, res) => {
+app.post('/sms', async function (req, res) {
   const smsCount = req.session.counter || 0;
   const respValues = req.session.respvalues || [];
 
@@ -39,11 +39,8 @@ app.post('/sms', (req, res) => {
 
   if(smsCount == 3) {
     respValues.push(req.body.Body);
-    router.get("/", async function(req, res, next) {
-      const result = await getResults(respValues[2]);
-      message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
-    });
-    message = "Your nearest center is located blah blah"
+    const result = await getResults(respValues[2]);
+    message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
   }
 
   req.session.counter = smsCount + 1;
