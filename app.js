@@ -26,10 +26,12 @@ app.post('/sms', async function (req, res) {
 
   if(smsCount == 1) {
     if (postcodeValidator(req.body.Body, 'US')) {
+      console.log(`post code is: ${req.body.Body}, and is valid.`);
       respValues.push(req.body.Body);
       const result = await getResults(respValues[0]);
       message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
     } else {
+      console.log(`post code is invalid.`);
       message = `Please enter a valid zipcode.`
       smsCount = smsCount - 1;
     }
