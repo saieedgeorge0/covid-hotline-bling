@@ -24,7 +24,7 @@ const getCases = async (zipcode) => {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     const casedatajson = await csv().fromFile('casedata.csv');
-    const recentdate = casedatajson[caseadatajson.length-1]['date'];
+    const recentdate = casedatajson[casedatajson.length-1]['date'];
     for(var i = 0; i < casedatajson.length; i++) {
     delete casedatajson[i]['date'];
     delete casedatajson[i]['county'];
