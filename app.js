@@ -16,10 +16,6 @@ if (port == null || port == "") {
 }
 
 app.get("/", async function(req, res) {
-  console.log("about to perform get request");
-  const result = await getResults(`15108`);
-  let message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
-  console.log(message);
   res.send('COVID Hotline Bling Bot is running');
 });
 
