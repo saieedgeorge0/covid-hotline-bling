@@ -1,5 +1,7 @@
 const express = require('express')
 const session = require('express-session');
+const router = express.Router();
+const getResults = require("./scraper");
 const { urlencoded } = require('body-parser');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
@@ -11,24 +13,36 @@ if (port == null || port == "") {
   port = 8000;
 }
 
-app.get('/', (req, res) => {
-  res.send('COVID Hotline Bling Bot is running')
+app.get("/", async function(req, res) {
+  console.log("about to perform get request");
+  const result = await getResults(`15108`);
+  let message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
+  console.log(message);
+  res.send('COVID Hotline Bling Bot is running');
 });
 
-app.post('/sms', (req, res) => {
+app.post('/sms', async function(req, res) {
   const smsCount = req.session.counter || 0;
   const respValues = req.session.respvalues || [];
 
-  let message = `What state do you currently live in?`;
+  let message = `What state do you live in?`;
 
   if(smsCount == 1) {
     respValues.push(req.body.Body);
     message = `Which county within ${respValues[0]} do you currently reside?`;
   }
 
-  if(smsCount > 1) {
+  if(smsCount == 2) {
     respValues.push(req.body.Body);
-    message = `Thanks! You live in ${respValues[1]}, ${respValues[0]}.`;
+    message = `What's your zip code? Once you let us know, please wait - it can take a few moments to pull the data.`;
+  }
+
+  if(smsCount == 3) {
+    respValues.push(req.body.Body);
+    const result = await getResults(`15108`);
+    message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
+
+    message = "Your nearest center is located blah blah"
   }
 
   req.session.counter = smsCount + 1;
