@@ -16,44 +16,28 @@ app.get('/', (req, res) => {
 
 app.post('/sms', (req, res) => {
   const smsCount = req.session.counter || 0;
+  const respValues = req.session.respvalues || [];
 
-  let message = 'Hello, thanks for the new message.';
+  let message = `What state do you currently live in?`;
 
-  if(smsCount > 0) {
-    message = 'Hello, thanks for message number ' + (smsCount + 1);
+  if(smsCount == 1) {
+    respValues.push(req.body.Body);
+    message = `Which county within ${respValues[0]} do you currently reside?`;
+  }
+
+  if(smsCount > 1) {
+    respValues.push(req.body.Body);
+    message = `Thanks! You live in ${respValues[1]}, ${respValues[0]}.`;
   }
 
   req.session.counter = smsCount + 1;
+  req.session.respvalues = respValues;
 
   const twiml = new MessagingResponse();
   twiml.message(message);
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
-
-  // const smsCount = req.session.counter || 0;
-  // const respValues = req.session.respvalues || [];
-
-  // let message = `What state do you currently live in?`;
-
-  // if(smsCount == 1) {
-  //   respValues.push(req.body.Body);
-  //   message = `Which county within ${respValues[0]} do you currently reside?`;
-  // }
-
-  // if(smsCount > 1) {
-  //   respValues.push(req.body.Body);
-  //   message = `Thanks! You live in ${respValues[1]}, ${respValues[0]}.`;
-  // }
-
-  // req.session.counter = smsCount + 1;
-  // req.session.respvalues = respValues;
-
-  // const twiml = new MessagingResponse();
-  // twiml.message(message);
-
-  // res.writeHead(200, {'Content-Type': 'text/xml'});
-  // res.end(twiml.toString());
 });
 
 app.listen(port, () => {
