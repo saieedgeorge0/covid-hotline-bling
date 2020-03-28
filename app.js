@@ -34,6 +34,11 @@ app.post('/sms', (req, res) => {
   req.session.counter = smsCount + 1;
   req.session.respvalues = respValues;
 
+  if(req.body.Body == `clear`) {
+    respValues = [];
+    smsCount = 0;
+  }
+
   const twiml = new MessagingResponse();
   twiml.message(message);
 
