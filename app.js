@@ -8,7 +8,6 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const app = express();
 app.use(urlencoded({ extended: false}));
 app.use(session({secret: 'anything-you-want-but-keep-secret'}));
-import { postcodeValidator, postcodeValidatorExists } from 'postcode-validator';
 
 let port = process.env.PORT;
 if (port == null || port == "") {
