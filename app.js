@@ -34,7 +34,7 @@ app.post('/sms', (req, res) => {
   req.session.counter = smsCount + 1;
   req.session.respvalues = respValues;
 
-  if(req.body.Body == `clear`) {
+  if(req.body.Body.toLowerCase() == `clear`) {
     req.session.respvalues = [];
     req.session.counter = 0;
     message = "You have cleared your information"
