@@ -23,7 +23,7 @@ app.post('/sms', async function (req, res) {
   let smsCount = req.session.counter || 0;
   const respValues = req.session.respvalues || [];
 
-  let message = `Hi! I can provide you with case/death numbers for your county as well as information for your nearest public health center! What's your zipcode? Once you let us know, please wait - it can take a few moments to pull the data.`;
+  let message = `Hi! I can provide you with case/death numbers for your county as well as information for your nearest public health center. What's your zipcode? Once you let us know, please wait - it can take a few moments to pull the data.`;
 
   if(smsCount == 1) {
     if (postcodeValidator(req.body.Body, 'US')) {
@@ -33,7 +33,7 @@ app.post('/sms', async function (req, res) {
       casesInArea = casesInAreaArray[0];
       mostRecentTime = casesInAreaArray[1];
       const result = await getResults(respValues[0]);
-      message = `As of ${mostRecentTime}, there are ${casesInArea.cases} recorded cases and ${casesInArea.deaths} recorded deaths in your county (data from NYTimes). Your nearest county health center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email} (Information from NACCHO).`;
+      message = `As of ${mostRecentTime}, there are ${casesInArea.cases} recorded cases and ${casesInArea.deaths} recorded deaths in your county (data from NYTimes). Your nearest county health center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email} (Information from NACCHO). Type "clear" to enter a new zip code.`;
       if(typeof result.name === undefined) {
         message = `No centers found. Sorry! Please try a different zipcode.`;
       }
@@ -49,8 +49,8 @@ app.post('/sms', async function (req, res) {
 
   if(req.body.Body.toLowerCase() == `clear`) {
     req.session.respvalues = [];
-    req.session.counter = 0;
-    message = "You have cleared your information."
+    req.session.counter = 1;
+    message = "Enter a new zip code."
   }
 
   const twiml = new MessagingResponse();
