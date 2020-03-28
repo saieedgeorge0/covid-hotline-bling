@@ -61,46 +61,6 @@ const getResults = async (zipcode) => {
 
     console.log(closestcenter);
     return closestcenter;
-
-    // return {
-    //     names: [...names].sort(),
-    //     numbers: [...numbers].sort(),
-    //     emailwebs: [...emailwebs].sort(),
-    // };
 };
-
-// const fetchData = async (siteUrl) => {
-//     const result = await axios.get(siteUrl);
-//     return cheerio.load(result.data);
-// };
-
-// const getResults = async (zipcode) => {
-//     const siteUrl = `https://www.naccho.org/membership/lhd-directory?searchType=zipCode&lhd-zip=${zipcode}&lhd-radius=25#card-filter`;
-//     let siteName = "";
-//     console.log(siteUrl);
-
-//     console.log("fetching data");
-//     const $ = await fetchData(siteUrl);
-
-//     $(".card--lhd-listing__lhd > .card__text-container > h3").each((index, element) => {
-//         names.add($(element).text());
-//     });
-
-//     $(".card--lhd-listing__lhd > .card__text-container > h3 ~ p").each((index, element) => {
-//         numbers.add($(element).text());
-//     });
-
-//     $(".card--lhd-listing__lhd > .card__text-container > p > strong > a").each((index, element) => {
-//         emailwebs.add($(element).text());
-//     });
-
-//     console.log("Data fetched.");
-
-//     return {
-//         names: [...names].sort(),
-//         numbers: [...numbers].sort(),
-//         emailwebs: [...emailwebs].sort(),
-//     };
-// };
 
 module.exports = getResults;
