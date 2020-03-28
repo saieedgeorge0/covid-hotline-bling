@@ -42,8 +42,11 @@ app.post('/sms', async function (req, res) {
       mostRecentTime = casesInAreaArray[1];
       const result = await getResults(respValues[0]);
       message = `As of ${mostRecentTime}, there are ${casesInArea.cases} recorded cases and ${casesInArea.deaths} recorded deaths in your county (data from NYTimes). Your nearest county health center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email} (Information from NACCHO). Type "clear" to enter a new zip code.`;
-      if(typeof result.name === undefined) {
-        message = `No centers found. Sorry! Please try a different zipcode.`;
+      if (typeof result.name === undefined) {
+        message = `As of ${mostRecentTime}, there are ${casesInArea.cases} recorded cases and ${casesInArea.deaths} recorded deaths in your county (data from NYTimes). No centers found. Sorry! Please try a different zipcode.`;
+      }
+      if (typeof casesInArea.cases === undefined){
+        message = `No cases found in your area (or the NYTimes does not have data for it). Your nearest county health center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email} (Information from NACCHO). Type "clear" to enter a new zip code.`;
       }
     } else {
       console.log(`post code is invalid.`);
