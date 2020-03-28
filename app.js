@@ -19,6 +19,14 @@ app.get("/", async function(req, res) {
   res.send('COVID Hotline Bling Bot is running');
 });
 
+app.get("/zipcode/:id?", async function(req, res) {
+  var zipcode = req.params.id;
+  casesInAreaArray = await getCases(zipcode);
+  yourfip = casesInAreaArray[0];
+  yourfip.recentdate = casesInAreaArray[1];
+  res.json(yourfip);
+});
+
 app.post('/sms', async function (req, res) {
   let smsCount = req.session.counter || 0;
   const respValues = req.session.respvalues || [];
