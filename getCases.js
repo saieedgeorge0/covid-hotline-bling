@@ -20,7 +20,7 @@ const getCases = async (zipcode) => {
         if (cb) cb(err.message);
     });
     };
-    download('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv', 'casedata.csv')
+    download('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv', 'casedata.csv');
     await new Promise(resolve => setTimeout(resolve, 500));
 
     const casedatajson = await csv().fromFile('casedata.csv');
@@ -52,7 +52,7 @@ const getCases = async (zipcode) => {
     }
     console.log(fipswewant);
 
-    return fipswewant, recentdate;
+    return [fipswewant, recentdate];
 };
 
 module.exports = getCases;
