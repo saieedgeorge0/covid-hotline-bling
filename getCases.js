@@ -41,8 +41,8 @@ const getCases = async (zipcode) => {
     var id = obj.fips
     if(!this[id]) casedatajson2.push(this[id] = obj);
     else {
-        this[id].cases += obj.cases;
-        this[id].deaths += obj.deaths;
+        this[id].cases = obj.cases;
+        this[id].deaths = obj.deaths;
     }
     }, Object.create(null));
 
