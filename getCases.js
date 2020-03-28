@@ -1,7 +1,6 @@
 const fs = require('fs');
 let rawdata = fs.readFileSync('zip2fips.json');
 let zip2fips = JSON.parse(rawdata);
-var fs = require('fs');
 const http = require('https');
 const csv = require('csvtojson');
 
