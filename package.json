@@ -22,6 +22,7 @@
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "postcode-validator": "^3.1.0",
     "puppeteer": "^2.1.1",
     "twilio": "^3.41.1",
     "zipcodes": "^8.0.0"
