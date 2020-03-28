@@ -31,7 +31,7 @@ app.post('/sms', async function (req, res) {
       respValues.push(req.body.Body);
       casesInArea = await getCases(respValues[0]);
       const result = await getResults(respValues[0]);
-      message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
+      message = `There are ${casesInArea.cases} recorded cases and ${casesInArea.deaths} record deaths in your county. Your nearest county health center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
       if(typeof result.name === undefined) {
         message = `No centers found. Sorry! Please try a different zipcode.`;
       }
