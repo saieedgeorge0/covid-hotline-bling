@@ -29,7 +29,7 @@ app.post('/sms', async function (req, res) {
     if (postcodeValidator(req.body.Body, 'US')) {
       console.log(`post code is: ${req.body.Body}, and is valid.`);
       respValues.push(req.body.Body);
-      casesInArea = await GetCases(respValues[0]);
+      casesInArea = await getCases(respValues[0]);
       const result = await getResults(respValues[0]);
       message = `Your nearest center is the ${result.name}. You can call them at this number: ${result.phone}, or email them/visit their website here: ${result.email}.`;
       if(typeof result.name === undefined) {
