@@ -1,7 +1,7 @@
 # Covid Health Hotline Finder
 
 ## **Description**
-For a (COVID-19) Pandemic Response Hackathon, we took local health county cases/deaths data on COVID-19 (using [The New York Times data](https://github.com/nytimes/covid-19-data)) and on local health departments (using [NACCHO](https://www.naccho.org/membership/lhd-directory?searchType=standard&lhd-state=ID#card-filter)) and created a Twilio bot, exposed it as an API, and built a dynamic visualization in R Studio with Leaflet. 
+For a (COVID-19) Pandemic Response Hackathon, we took local health county cases/deaths data on COVID-19 (using [The New York Times data](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html)) and on local health departments (using [NACCHO](https://www.naccho.org/membership/lhd-directory?searchType=standard&lhd-state=ID#card-filter)) and created a Twilio bot, exposed it as an API, and built a dynamic visualization in R Studio with Leaflet. 
 
 ## **Landing Page**
 The landing page for all three technologies can be accessed [here](http://covid19.georgesaieed.com). The repository for it can be found [here](http://github.com/saieedgeorge0/covid-hotline-bling-landing).
@@ -28,7 +28,7 @@ It will return a JSON object with the FIPS code for the county, number of cases,
 ```
 
 ## **Visualization**
-[Click here]() for the repository containing the visualization code. Created with Leaflet in R Studio, this allows you to view the cases/deaths by county due to COVID-19. Data comes from The New York Times, and it is automatically updated everytime they add new data. Heatmap was generated using logarathmic transformation of the data, in order to generate a better visual despite the presence of any outliers.
+[Click here](http://ekkendall.github.io/COVID-Heatmap) to view the visualization. [Click here](http://github.com/ekkendall/COVID-Heatmap) for the repository containing the visualization code. Created with Leaflet in R Studio, this allows you to view the cases/deaths by county due to COVID-19. Data comes from The New York Times, and it is automatically updated everytime they add new data. Heatmap was generated using logarathmic transformation of the data, in order to generate a better visual despite the presence of any outliers. Cases matched to unknown counties were removed. The New York Times data contains data for all boroughs associated with New York City as one data point - thus, each of these boroughs shows the aggregate data for all of NYC as associated with them.
 
 ## **Contributors**
 - [George Saieed](http://georgesaieed.com)
