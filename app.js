@@ -58,7 +58,7 @@ app.post('/sms', async function (req, res) {
   req.session.counter = smsCount + 1;
   req.session.respvalues = respValues;
 
-  if(req.body.Body.toLowerCase() == `clear`) {
+  if(smsCount > 1) {
     req.session.respvalues = [];
     req.session.counter = 1;
     message = "Enter a new zip code."
