@@ -7,7 +7,7 @@ For a (COVID-19) Pandemic Response Hackathon, we took local health county cases/
 The landing page for all three technologies can be accessed [here](http://covid19.georgesaieed.com). The repository for it can be found [here](http://github.com/saieedgeorge0/covid-hotline-bling-landing).
 
 ## **Twilio Bot**
-This is the repository for the twilio bot. It prompts a user for their location (via zipcode), then gives the user information (from NACCHO) about the local health department closest to them. It also provides them with the most up-to-date data (from The New York Times) regarding the number of cases of and deaths due to COVID-19. It was built with Node.JS and Twilio and is deployed via Heroku. Because we're using the free tier of Heroku, sometimes, the bot goes to sleep - if you don't get a reponse the first time, wait a moment and try again.
+This is the repository for the Twilio Bot. First, text anything to (216)-284-3839. It then prompts a user for their location (via zipcode), then gives the user information (from NACCHO) about the local health department closest to them. It also provides them with the most up-to-date data (from The New York Times) regarding the number of cases of and deaths due to COVID-19. It was built with Node.JS and Twilio and is deployed via Heroku. Because we're using the free tier of Heroku, sometimes, the bot goes to sleep - if you don't get a reponse the first time, wait a moment and try again.
 
 ## **API**
 This is the repository for the Node.JS application that serves as an API which allows you to access The New York Times cases/deaths data for COVID-19 by county given a zip code. Using it is easy - make a GET request:
