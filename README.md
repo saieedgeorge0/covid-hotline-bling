@@ -1,7 +1,7 @@
 # Covid Health Hotline Finder
 
 ## **Description**
-For a (COVID-19) Pandemic Response Hackathon, we took local health county cases/deaths data on COVID-19 (using [The New York Times data](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html)) and on local health departments (using [NACCHO](https://www.naccho.org/membership/lhd-directory?searchType=standard&lhd-state=ID#card-filter)) and created a Twilio bot, exposed it as an API, and built a dynamic visualization in R Studio with Leaflet. 
+For a (COVID-19) Pandemic Response Hackathon, we took local health county cases/deaths data on COVID-19 (using [The New York Times data](https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html)) and on local health departments (using [NACCHO](https://www.naccho.org/membership/lhd-directory?searchType=standard&lhd-state=ID#card-filter)) and created a Twilio bot, exposed it as an API, and built a dynamic visualization in R Studio with Leaflet. View a demo of this project [here](https://youtu.be/CPIUAJHWROc).
 
 ## **Landing Page**
 The landing page for all three technologies can be accessed [here](http://covid19.georgesaieed.com). The repository for it can be found [here](http://github.com/saieedgeorge0/covid-hotline-bling-landing).
