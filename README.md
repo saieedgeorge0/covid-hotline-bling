@@ -27,6 +27,35 @@ It will return a JSON object with the FIPS code for the county, number of cases,
 }
 ```
 
+You can also get all the data **associated with FIPS codes that only includes the most up-to-date total of cases and deaths** by making the following GET request:
+
+```html
+http://covid-hotline-bling.herokuapp.com/zipcode/44106
+```
+
+It will return an array with all data associated with FIPS codes:
+
+```json
+[ 
+    { 
+        "date":"2020-03-28",
+        "county":"Snohomish",
+        "state":"Washington",
+        "fips":"53061",
+        "cases":912,
+        "deaths":23
+    }, 
+    {
+        "date":"2020-03-28",
+        "county":"Cook",
+        "state":"Illinois",
+        "fips":"17031",
+        "cases":2613,
+        "deaths":28
+    }, etc
+]
+```
+
 ## **Visualization**
 [Click here](http://ekkendall.github.io/COVID-Heatmap) to view the visualization. [Click here](http://github.com/ekkendall/COVID-Heatmap) for the repository containing the visualization code. Created with Leaflet in R Studio, this allows you to view the cases/deaths by county due to COVID-19. Data comes from The New York Times, and it is automatically updated everytime they add new data. Heatmap was generated using logarathmic transformation of the data, in order to generate a better visual despite the presence of any outliers. Cases matched to unknown counties were removed. The New York Times data contains data for all boroughs associated with New York City as one data point - thus, each of these boroughs shows the aggregate data for all of NYC as associated with them. As per the data, cases associated with Kansas City are not shown. All Chicago cases are included with Cook County. For other limitations, see the [github repository](https://github.com/nytimes/covid-19-data) associated with the data.
 
