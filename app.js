@@ -4,6 +4,7 @@ const router = express.Router();
 const getResults = require("./scraper");
 const getCases = require("./getCases");
 const getAllCases = require("./getAllCases");
+const getRawCases = require("./getRawCases");
 const { urlencoded } = require('body-parser');
 const { postcodeValidator, postcodeValidatorExists } = require('postcode-validator');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
@@ -28,9 +29,17 @@ app.get("/zipcode/:id?", async function(req, res) {
   res.json(yourfip);
 });
 
-app.get("/dataallfips", async function(req, res) {
-  allCases = await getAllCases();
-  res.json(allCases);
+app.get("/dataallfips/:id?", async function(req, res) {
+  if (req.params.id == "raw") {
+    console.log("raw");
+    rawCases = await getRawCases();
+    res.json(rawCases);
+  }
+  else {
+    console.log("notraw");
+    allCases = await getAllCases();
+    res.json(allCases);
+  }
 });
 
 app.post('/sms', async function (req, res) {
