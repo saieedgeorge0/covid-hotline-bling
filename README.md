@@ -13,7 +13,7 @@ This is the repository for the Twilio Bot. First, text anything to (216)-284-383
 This is the repository for the Node.JS application that serves as an API which allows you to access The New York Times cases/deaths data for COVID-19 by county given a zip code. Using it is easy - make a GET request:
 
 ```html
-http://covid-hotline-bling.herokuapp.com/zipcode/44106
+https://covid-hotline-bling.herokuapp.com/zipcode/44106
 ```
 
 It will return a JSON object with the FIPS code for the county, number of cases, deaths, and the last time the data was updated:
@@ -30,7 +30,7 @@ It will return a JSON object with the FIPS code for the county, number of cases,
 You can also get all the data **associated with FIPS codes that only includes the most up-to-date total of cases and deaths** by making the following GET request:
 
 ```html
-http://covid-hotline-bling.herokuapp.com/dataallfips
+https://covid-hotline-bling.herokuapp.com/dataallfips
 ```
 
 It will return an array of all JSON objects with all data associated with FIPS codes:
