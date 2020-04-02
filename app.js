@@ -18,10 +18,18 @@ if (port == null || port == "") {
 }
 
 app.get("/", async function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   res.send('COVID Hotline Bling Bot is running');
 });
 
 app.get("/zipcode/:id?", async function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   var zipcode = req.params.id;
   casesInAreaArray = await getCases(zipcode);
   yourfip = casesInAreaArray[0];
@@ -30,6 +38,10 @@ app.get("/zipcode/:id?", async function(req, res) {
 });
 
 app.get("/dataallfips/:id?", async function(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   if (req.params.id == "raw") {
     console.log("raw");
     rawCases = await getRawCases();
