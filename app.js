@@ -18,7 +18,7 @@ if (port == null || port == "") {
 }
 
 app.get("/", async function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -26,7 +26,7 @@ app.get("/", async function(req, res) {
 });
 
 app.get("/zipcode/:id?", async function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -38,7 +38,7 @@ app.get("/zipcode/:id?", async function(req, res) {
 });
 
 app.get("/dataallfips/:id?", async function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://covid-hotline-bling.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
   res.setHeader('Access-Control-Allow-Credentials', true);
